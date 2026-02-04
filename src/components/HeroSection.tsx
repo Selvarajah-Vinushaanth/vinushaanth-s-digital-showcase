@@ -106,13 +106,13 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 px-4 sm:px-0"
           >
             <Button 
               variant="hero" 
               size="lg"
               onClick={() => scrollToSection('#projects')}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto min-h-[52px] text-base"
             >
               <Eye className="mr-2" size={20} />
               View Projects
@@ -121,7 +121,7 @@ export const HeroSection = () => {
               variant="outline" 
               size="lg"
               onClick={() => window.open('/resume.pdf', '_blank')}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto min-h-[52px] text-base"
             >
               <Download className="mr-2" size={20} />
               Download CV
@@ -130,7 +130,7 @@ export const HeroSection = () => {
               variant="glass" 
               size="lg"
               onClick={() => scrollToSection('#contact')}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto min-h-[52px] text-base"
             >
               <Mail className="mr-2" size={20} />
               Contact Me
@@ -142,7 +142,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex items-center justify-center gap-4"
+            className="flex items-center justify-center gap-3 sm:gap-4"
           >
             {socialLinks.map((social) => (
               <motion.a
@@ -150,12 +150,12 @@ export const HeroSection = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-secondary/50 border border-glass-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
+                className="p-3 sm:p-3 rounded-xl bg-secondary/50 border border-glass-border text-muted-foreground hover:text-primary hover:border-primary/50 active:scale-95 active:bg-primary/20 transition-all duration-300"
                 whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={social.label}
               >
-                <social.icon size={22} />
+                <social.icon size={24} className="sm:w-[22px] sm:h-[22px]" />
               </motion.a>
             ))}
           </motion.div>
