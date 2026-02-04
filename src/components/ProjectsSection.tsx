@@ -114,7 +114,7 @@ export const ProjectsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12"
           >
             {categories.map((category) => (
               <Button
@@ -122,15 +122,15 @@ export const ProjectsSection = () => {
                 variant={activeCategory === category ? 'default' : 'glass'}
                 size="sm"
                 onClick={() => setActiveCategory(category)}
-                className="rounded-full"
+                className="rounded-full min-h-[40px] px-4 text-sm"
               >
                 {category}
               </Button>
             ))}
           </motion.div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Projects Grid - single column on mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -140,47 +140,49 @@ export const ProjectsSection = () => {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <div className="h-full glass-card rounded-2xl p-6 flex flex-col transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
+                <div className="h-full glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 flex flex-col transition-all duration-300 hover:border-primary/50 active:border-primary/50 active:bg-primary/5 hover:shadow-lg hover:shadow-primary/10">
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                      <Folder size={24} />
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 text-primary">
+                      <Folder className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-4">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="p-2 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors"
+                        aria-label={`View ${project.title} on GitHub`}
                       >
-                        <Github size={20} />
+                        <Github className="w-5 h-5" />
                       </a>
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="p-2 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors"
+                        aria-label={`View ${project.title} live`}
                       >
-                        <ExternalLink size={20} />
+                        <ExternalLink className="w-5 h-5" />
                       </a>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-display font-semibold text-xl mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-display font-semibold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-3 sm:mb-4 flex-grow">
                     {project.description}
                   </p>
 
                   {/* Category Badge */}
-                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-secondary text-xs font-medium text-muted-foreground mb-4">
+                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-secondary text-xs font-medium text-muted-foreground mb-3 sm:mb-4">
                     {project.category}
                   </span>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
