@@ -358,12 +358,12 @@ export const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Section Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4"
+              className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4"
             >
               My Work
             </motion.span>
@@ -371,7 +371,7 @@ export const ProjectsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-3 sm:mb-4"
             >
               Featured <span className="gradient-text">Projects</span>
             </motion.h2>
@@ -379,7 +379,7 @@ export const ProjectsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-muted-foreground max-w-2xl mx-auto"
+              className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto px-4 sm:px-0"
             >
               A collection of {projects.length}+ projects spanning web development, AI/ML,
               game development, and automation tools
@@ -391,7 +391,7 @@ export const ProjectsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12"
+            className="flex overflow-x-auto pb-2 sm:pb-0 sm:flex-wrap justify-start sm:justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 md:mb-12 -mx-4 px-4 sm:mx-0 sm:px-0 mobile-scroll"
           >
             {categories.map((category) => (
               <Button
@@ -402,7 +402,7 @@ export const ProjectsSection = () => {
                   setActiveCategory(category);
                   setShowAll(false);
                 }}
-                className="rounded-full min-h-[40px] px-4 text-sm"
+                className="rounded-full min-h-[40px] px-3 sm:px-4 text-xs sm:text-sm whitespace-nowrap shrink-0 active:scale-[0.98] transition-transform touch-target"
               >
                 {category}
                 {category !== 'All' && (
@@ -415,28 +415,28 @@ export const ProjectsSection = () => {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
             {displayedProjects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: 0.05 * (index % 6) }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -5 }}
                 className="group"
               >
-                <div className="h-full glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 flex flex-col transition-all duration-300 hover:border-primary/50 active:border-primary/50 active:bg-primary/5 hover:shadow-lg hover:shadow-primary/10">
+                <div className="h-full glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col transition-all duration-300 hover:border-primary/50 active:border-primary/50 active:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 card-interactive">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-3 sm:mb-4">
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 text-primary">
-                      <Folder className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-primary/10 text-primary">
+                      <Folder className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 sm:gap-4">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors"
+                        className="p-2.5 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors touch-target"
                         aria-label={`View ${project.title} on GitHub`}
                       >
                         <Github className="w-5 h-5" />
@@ -446,7 +446,7 @@ export const ProjectsSection = () => {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors"
+                          className="p-2.5 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors touch-target"
                           aria-label={`View ${project.title} live`}
                         >
                           <ExternalLink className="w-5 h-5" />
@@ -456,24 +456,24 @@ export const ProjectsSection = () => {
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-display font-semibold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-display font-semibold text-base sm:text-lg md:text-xl mb-2 group-hover:text-primary transition-colors leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-3 sm:mb-4 flex-grow">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-grow line-clamp-3 sm:line-clamp-none">
                     {project.description}
                   </p>
 
                   {/* Category Badge */}
-                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-secondary text-xs font-medium text-muted-foreground mb-3 sm:mb-4">
+                  <span className="inline-block w-fit px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-secondary text-[10px] sm:text-xs font-medium text-muted-foreground mb-3 sm:mb-4">
                     {project.category}
                   </span>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary/80"
+                        className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs rounded-md bg-primary/10 text-primary/80"
                       >
                         {tech}
                       </span>
@@ -490,13 +490,13 @@ export const ProjectsSection = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex justify-center mt-8 sm:mt-12"
+              className="flex justify-center mt-6 sm:mt-8 md:mt-12 px-4 sm:px-0"
             >
               <Button
                 variant="glass"
                 size="lg"
                 onClick={() => setShowAll(!showAll)}
-                className="rounded-full min-h-[52px] px-8 text-base gap-2"
+                className="rounded-full min-h-[52px] w-full sm:w-auto px-6 sm:px-8 text-sm sm:text-base gap-2 active:scale-[0.98] transition-transform touch-target"
               >
                 {showAll ? (
                   <>

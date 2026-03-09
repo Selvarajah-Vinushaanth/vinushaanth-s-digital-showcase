@@ -31,7 +31,7 @@ export const BackToTop = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 p-3 sm:p-4 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3.5 sm:p-4 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 active:scale-95 transition-all touch-target safe-area-inset"
           aria-label="Back to top"
         >
           <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6" />

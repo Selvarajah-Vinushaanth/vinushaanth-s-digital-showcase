@@ -26,21 +26,21 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary/30 border-t border-glass-border">
-      <div className="container mx-auto px-4 md:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center">
+    <footer className="bg-secondary/30 border-t border-glass-border safe-area-inset">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3 md:gap-8 items-center">
           {/* Logo & Description */}
           <div className="text-center md:text-left">
-            <a href="#home" className="text-xl sm:text-2xl font-display font-bold gradient-text inline-block mb-2 sm:mb-3">
+            <a href="#home" className="text-lg sm:text-xl md:text-2xl font-display font-bold gradient-text inline-block mb-2 sm:mb-3">
               Vinushaanth<span className="text-foreground">.</span>
             </a>
-            <p className="text-muted-foreground text-xs sm:text-sm max-w-xs mx-auto md:mx-0">
-              Computer Science Engineer passionate about building innovative solutions.
+            <p className="text-muted-foreground text-xs sm:text-sm max-w-xs mx-auto md:mx-0 leading-relaxed">
+              ML Engineer & Full-Stack Developer passionate about building intelligent solutions.
             </p>
           </div>
 
           {/* Navigation */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 sm:gap-y-3">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -49,7 +49,7 @@ export const Footer = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-muted-foreground hover:text-primary active:text-primary transition-colors text-xs sm:text-sm py-1"
+                className="text-muted-foreground hover:text-primary active:text-primary transition-colors text-xs sm:text-sm py-1.5 touch-target flex items-center justify-center"
               >
                 {link.name}
               </a>
@@ -64,22 +64,21 @@ export const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 sm:p-2 rounded-lg text-muted-foreground hover:text-primary active:text-primary transition-colors"
+                className="p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-secondary/50 border border-glass-border text-muted-foreground hover:text-primary hover:border-primary/50 active:text-primary active:bg-primary/10 transition-all touch-target"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={social.label}
               >
-                <social.icon className="w-5 h-5 sm:w-5 sm:h-5" />
+                <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.a>
             ))}
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-glass-border text-center">
-          <p className="text-muted-foreground text-xs sm:text-sm flex items-center justify-center gap-1 flex-wrap">
-            © {currentYear} Vinushaanth. 
-            All rights reserved.
+        <div className="mt-6 sm:mt-8 md:mt-10 pt-5 sm:pt-6 md:pt-8 border-t border-glass-border text-center">
+          <p className="text-muted-foreground text-[10px] sm:text-xs md:text-sm">
+            © {currentYear} Vinushaanth. All rights reserved.
           </p>
         </div>
       </div>

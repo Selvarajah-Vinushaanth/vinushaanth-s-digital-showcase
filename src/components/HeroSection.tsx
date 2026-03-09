@@ -21,11 +21,11 @@ export const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden pt-16 sm:pt-0">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-primary/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -37,7 +37,7 @@ export const HeroSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-sky-500/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.4, 0.2, 0.4],
@@ -59,16 +59,16 @@ export const HeroSection = () => {
         }}
       />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Greeting */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6"
+            className="mb-4 sm:mb-6"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-medium">
               Welcome to my portfolio
             </span>
           </motion.div>
@@ -78,7 +78,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4 sm:mb-6 leading-tight"
           >
             Hi, I'm{' '}
             <span className="gradient-text">Vinushaanth</span>
@@ -89,7 +89,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl sm:text-2xl md:text-3xl font-display text-muted-foreground mb-6"
+            className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display text-muted-foreground mb-4 sm:mb-6"
           >
             ML Engineer · Full-Stack Developer · Data Science
           </motion.h2>
@@ -99,7 +99,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2 sm:px-0"
           >
             Bridging Machine Learning and Software Engineering — I build intelligent web apps, 
             ML pipelines, and full-stack solutions. Currently an ML Engineering Intern at CML Insight Inc, Austin, Texas, USA.
@@ -110,13 +110,13 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 px-4 sm:px-0"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-8 sm:mb-10 md:mb-12 px-2 sm:px-0"
           >
             <Button 
               variant="hero" 
               size="lg"
               onClick={() => scrollToSection('#projects')}
-              className="w-full sm:w-auto min-h-[52px] text-base"
+              className="w-full sm:w-auto min-h-[52px] text-base rounded-xl active:scale-[0.98] transition-transform touch-target"
             >
               <Eye className="mr-2" size={20} />
               View Projects
@@ -125,7 +125,7 @@ export const HeroSection = () => {
               variant="outline" 
               size="lg"
               onClick={() => setIsResumeOpen(true)}
-              className="w-full sm:w-auto min-h-[52px] text-base"
+              className="w-full sm:w-auto min-h-[52px] text-base rounded-xl active:scale-[0.98] transition-transform touch-target"
             >
               <FileText className="mr-2" size={20} />
               Preview CV
@@ -134,7 +134,7 @@ export const HeroSection = () => {
               variant="glass" 
               size="lg"
               onClick={() => scrollToSection('#contact')}
-              className="w-full sm:w-auto min-h-[52px] text-base"
+              className="w-full sm:w-auto min-h-[52px] text-base rounded-xl active:scale-[0.98] transition-transform touch-target"
             >
               <Mail className="mr-2" size={20} />
               Contact Me
@@ -154,12 +154,12 @@ export const HeroSection = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 sm:p-3 rounded-xl bg-secondary/50 border border-glass-border text-muted-foreground hover:text-primary hover:border-primary/50 active:scale-95 active:bg-primary/20 transition-all duration-300"
+                className="p-3.5 sm:p-3 rounded-xl bg-secondary/50 border border-glass-border text-muted-foreground hover:text-primary hover:border-primary/50 active:scale-95 active:bg-primary/20 transition-all duration-300 touch-target"
                 whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={social.label}
               >
-                <social.icon size={24} className="sm:w-[22px] sm:h-[22px]" />
+                <social.icon size={22} className="w-5 h-5 sm:w-[22px] sm:h-[22px]" />
               </motion.a>
             ))}
           </motion.div>
@@ -170,7 +170,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 hidden sm:block"
         >
           <motion.button
             onClick={() => scrollToSection('#about')}
