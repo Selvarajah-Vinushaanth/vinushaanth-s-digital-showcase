@@ -61,7 +61,7 @@ export const ContactSection = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
-          <div className="text-center mb-10 sm:mb-16">
+          <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export const ContactSection = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 glass-card rounded-xl hover:border-primary/50 active:border-primary/50 active:bg-primary/5 transition-all group min-h-[60px]"
+                      className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 glass-card rounded-xl hover:border-primary/50 active:border-primary/50 active:bg-primary/5 transition-all group"
                     >
                       <div className="p-2.5 sm:p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground group-active:bg-primary group-active:text-primary-foreground transition-all shrink-0">
                         <item.icon className="w-4 h-4 sm:w-5 sm:h-5" />
