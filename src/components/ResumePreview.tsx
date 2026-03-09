@@ -71,7 +71,7 @@ export const ResumePreview = ({ isOpen, onClose }: ResumePreviewProps) => {
                   <ExternalLink size={16} className="mr-1.5" />
                   Open in Tab
                 </Button>
-                <Button
+                {/* <Button
                   variant="hero"
                   size="sm"
                   onClick={handleDownload}
@@ -79,7 +79,7 @@ export const ResumePreview = ({ isOpen, onClose }: ResumePreviewProps) => {
                 >
                   <Download size={16} className="mr-1.5" />
                   Download
-                </Button>
+                </Button> */}
                 <Button
                   variant="ghost"
                   size="icon"
