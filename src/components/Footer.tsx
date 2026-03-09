@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/vinushaanth', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/vinushaanth', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:vinushaanth@example.com', label: 'Email' },
+  { icon: Github, href: 'https://github.com/Selvarajah-Vinushaanth', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/selvarajah-vinushaanth/', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:selvavinu26816@gmail.com', label: 'Email' },
 ];
 
 const navLinks = [
@@ -78,8 +78,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-glass-border text-center">
           <p className="text-muted-foreground text-xs sm:text-sm flex items-center justify-center gap-1 flex-wrap">
-            © {currentYear} Vinushaanth. Made with 
-            <Heart size={14} className="text-destructive fill-destructive" /> 
+            © {currentYear} Vinushaanth. 
             All rights reserved.
           </p>
         </div>

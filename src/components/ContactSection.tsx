@@ -8,15 +8,15 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'vinushaanth@example.com', href: 'mailto:vinushaanth@example.com' },
-  { icon: MapPin, label: 'Location', value: 'Colombo, Sri Lanka', href: '#' },
-  { icon: Phone, label: 'Phone', value: '+94 77 123 4567', href: 'tel:+94771234567' },
+  { icon: Mail, label: 'Email', value: 'selvavinu26816@gmail.com', href: 'mailto:selvavinu26816@gmail.com' },
+  { icon: MapPin, label: 'Location', value: 'Colombo, Sri Lanka', href: 'https://www.google.com/maps/place/Colombo,+Sri+Lanka/@6.9271,79.8612,13z' },
+  { icon: Phone, label: 'Phone', value: '+94 76 994 0455', href: 'tel:+94769940455' },
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/vinushaanth', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/vinushaanth', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:vinushaanth@example.com', label: 'Email' },
+  { icon: Github, href: 'https://github.com/Selvarajah-Vinushaanth', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/selvarajah-vinushaanth/', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:selvavinu26816@gmail.com', label: 'Email' },
 ];
 
 export const ContactSection = () => {
@@ -103,6 +103,8 @@ export const ContactSection = () => {
                     <a
                       key={item.label}
                       href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 glass-card rounded-xl hover:border-primary/50 active:border-primary/50 active:bg-primary/5 transition-all group"
                     >
                       <div className="p-2.5 sm:p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground group-active:bg-primary group-active:text-primary-foreground transition-all shrink-0">

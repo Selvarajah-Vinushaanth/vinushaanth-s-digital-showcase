@@ -17,23 +17,21 @@ import {
 } from 'lucide-react';
 
 const skills = [
-  { icon: Brain, name: 'Artificial Intelligence', description: 'Machine Learning, Deep Learning, NLP' },
+  { icon: Brain, name: 'Artificial Intelligence', description: 'Machine Learning, Deep Learning, NLP, Computer Vision' },
   { icon: Network, name: 'Networking', description: 'Network Security, Protocols, Infrastructure' },
   { icon: Cloud, name: 'Cloud Computing', description: 'AWS, Azure, GCP, Serverless' },
-  { icon: Cpu, name: 'Embedded Systems', description: 'IoT, Raspberry Pi, Arduino' },
+  { icon: Cpu, name: 'Embedded Systems', description: 'IoT, Arduino' },
   { icon: Globe, name: 'Web Development', description: 'React, Node.js, Full-stack' },
-  { icon: Smartphone, name: 'App Development', description: 'React Native, Flutter, Mobile' },
-  { icon: Monitor, name: 'Operating Systems', description: 'Linux, Windows, System Admin' },
-  { icon: Database, name: 'Data Science', description: 'Python, R, Data Analysis' },
-  { icon: Palette, name: 'Graphic Design', description: 'UI/UX, Figma, Adobe Suite' },
-  { icon: Code2, name: 'Programming', description: 'C++, Python, JavaScript, TypeScript' },
-  { icon: Server, name: 'Backend Development', description: 'APIs, Microservices, Databases' },
-  { icon: Shield, name: 'Cybersecurity', description: 'Ethical Hacking, Security Audits' },
+  { icon: Smartphone, name: 'App Development', description: 'React Native, Mobile' },
+  { icon: Monitor, name: 'Operating Systems', description: 'Linux, Windows' },
+  { icon: Database, name: 'Data Science', description: 'Python, Data Analysis' },
+  { icon: Code2, name: 'Programming', description: 'C++, Python, JavaScript, TypeScript, Java' },
+  { icon: Server, name: 'Backend Development', description: 'APIs, Microservices, Databases' }
 ];
 
 const technologies = [
   'JavaScript', 'TypeScript', 'Python', 'C++', 'Java',
-  'React', 'Next.js', 'Node.js', 'Express', 'Django',
+  'React', 'Next.js', 'Node.js', 'Express', 'FastAPI',
   'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'Kubernetes',
   'AWS', 'Git', 'Linux', 'TensorFlow', 'PyTorch'
 ];

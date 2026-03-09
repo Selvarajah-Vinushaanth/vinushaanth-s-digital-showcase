@@ -1,76 +1,352 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, Github, Folder } from 'lucide-react';
+import { ExternalLink, Github, Folder, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const categories = ['All', 'Web', 'AI/ML', 'Games', 'Tools'];
 
 const projects = [
   {
-    title: 'BookSky',
-    description: 'A comprehensive book management and recommendation system with user authentication and personalized suggestions.',
+    title: 'Talksy',
+    description:
+      'A real-time communication app supporting one-to-one and group chats, along with audio and video calling. Features direct messaging, group conversations, single and group audio/video calls — all in one seamless platform.',
+    tech: ['React', 'WebRTC', 'Socket.io', 'Node.js'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/talksy',
+    live: '#',
+    featured: true,
+  },
+  {
+    title: 'YOLOvFeed',
+    description:
+      'A real-time object detection and monitoring platform using YOLO technology. Features live streaming with accurate object recognition, customizable confidence levels, analytics dashboard, AI chat assistance, and cloud storage through Firebase.',
+    tech: ['React', 'TypeScript', 'FastAPI', 'YOLO', 'WebSocket'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/yolovfeed',
+    live: '#',
+    featured: true,
+  },
+  {
+    title: 'Interview Prep',
+    description:
+      'An AI-powered mock interview platform where users practice HR, technical, system design, and behavioral interviews. The AI evaluates responses and provides scoring, strengths, improvement areas, and question-by-question feedback.',
+    tech: ['React', 'AI', 'Node.js', 'TypeScript'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/interview-prep',
+    live: '#',
+    featured: true,
+  },
+  {
+    title: 'LegalEase',
+    description:
+      'An AI-driven solution for automated real estate document generation using multi-agent workflows and Google Gemini AI with structured JSON outputs. Features geo-aware compliance for U.S. states and a credit-based system with API tracking.',
+    tech: ['Google Gemini', 'Multi-agent', 'Python', 'API'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/legalease',
+    live: '#',
+    featured: true,
+  },
+  {
+    title: 'OmniControl Dashboard',
+    description:
+      'A React-based web dashboard for remote system administration, offering real-time monitoring of CPU, memory, network, and processes. Features interactive terminal, live screen previews, file management, and AI-driven system insights.',
+    tech: ['React', 'System Admin', 'Real-time', 'AI'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/omnicontrol',
+    live: '#',
+    featured: true,
+  },
+  {
+    title: 'Semantic Image Search',
+    description:
+      'A web app that lets users upload images and search using natural language descriptions. Uses OpenAI CLIP model for content understanding with a React frontend and FastAPI backend with FAISS vector search.',
+    tech: ['React', 'FastAPI', 'CLIP', 'FAISS', 'Python'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/semantic-image-search',
+    live: '#',
+    featured: true,
+  },
+  {
+    title: 'VerseMind',
+    description:
+      'A Tamil Songwriting Assistant platform leveraging cutting-edge AI to help users create, analyze, and enhance Tamil literary content. Provides intelligent assistance for professional songwriters, poets, and enthusiasts.',
+    tech: ['AI', 'NLP', 'React', 'Python'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/versemind',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Neura AI Chat Build',
+    description:
+      'A chat interface for text, file, and image analysis with text generation, image recognition, and real-time responses. Users can choose models, toggle themes, use voice input, and manage chats with prompt templates.',
+    tech: ['React', 'AI', 'Image Recognition', 'TTS'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/neura-ai',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'SecureVision Pro',
+    description:
+      'A modern web-based CCTV monitoring solution with real-time low-latency streaming, intelligent motion detection with auto-recording, and a fully responsive mobile-ready interface with stats dashboard.',
+    tech: ['FastAPI', 'OpenCV', 'JavaScript', 'Streaming'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/securevision-pro',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'AI Vision Assistant Pro',
+    description:
+      'A real-time object detection tool using OpenCV. Tracks selected objects through a live camera feed, estimates distance, and alerts users. Features customizable tracking, adjustable settings, detection logs, and dark mode.',
+    tech: ['Python', 'OpenCV', 'Object Detection', 'Real-time'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/ai-vision-assistant',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'AI-Powered Medical Chatbot',
+    description:
+      'An AI chatbot answering medical questions based on a medical book using vector embeddings. Features semantic search for accurate responses, ensuring reliability by restricting answers to book content.',
+    tech: ['Python', 'Vector DB', 'Embeddings', 'NLP'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/medical-chatbot',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Cloud-Sync',
+    description:
+      'A cloud-based file management system for uploading, organizing, and managing files. Features recent folders, file details, list/icon views, star and delete functionality for quick access.',
+    tech: ['React', 'Cloud Storage', 'Node.js', 'File Mgmt'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/cloud-sync',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Money Manager',
+    description:
+      'An advanced web application for personal finance management. Enables tracking income and expenses, visualizing financial data through charts, and managing personal budgets securely in real time.',
+    tech: ['React', 'Charts', 'Node.js', 'MongoDB'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/money-manager',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Credit Score Predictor',
+    description:
+      'A machine learning web app that predicts credit score categories — Good, Standard, or Bad — based on financial and behavioral inputs using a trained Random Forest model with proper preprocessing.',
+    tech: ['Python', 'Flask', 'Scikit-learn', 'Random Forest'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/vcredit-score',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Landmark Location Finder',
+    description:
+      'An AI-powered web app that identifies landmarks from images, showing names, locations, and history. Integrated with Google Vision and Gemini APIs for real-time recognition with a mobile-friendly interface.',
+    tech: ['Flask', 'Google Vision', 'Gemini AI', 'Python'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/landmark-finder',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'EMNIST Character Recognition',
+    description:
+      'An interactive web app using deep learning to identify handwritten letters and digits. Users draw on a canvas or upload images, and a trained CNN model predicts characters with real-time recognition.',
+    tech: ['Python', 'CNN', 'Deep Learning', 'Canvas'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/emnist-recognition',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'BookSky Web',
+    description:
+      'A simple to-do list application for managing and tracking books. Users can add, edit, and mark books as read, helping them stay organized with their reading goals.',
     tech: ['React', 'Node.js', 'MongoDB', 'Express'],
     category: 'Web',
     github: 'https://github.com/vinushaanth/booksky',
     live: '#',
-    featured: true,
+    featured: false,
   },
   {
     title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe'],
+    description:
+      'An online platform with real-time product management enabling businesses to track and update product information instantly, ensuring accurate inventory, pricing, and order management.',
+    tech: ['React', 'Node.js', 'MongoDB', 'Real-time'],
     category: 'Web',
     github: 'https://github.com/vinushaanth/ecommerce',
     live: '#',
-    featured: true,
+    featured: false,
   },
   {
-    title: 'AI Vision Analyzer',
-    description: 'Computer vision application for object detection and image classification using deep learning.',
-    tech: ['Python', 'TensorFlow', 'OpenCV', 'Flask'],
-    category: 'AI/ML',
-    github: 'https://github.com/vinushaanth/ai-vision',
+    title: 'Private Cloud-Drive',
+    description:
+      'A personal cloud storage system using MongoDB Atlas for file database management (especially PDFs) and Cloudinary for efficient image and video storage.',
+    tech: ['Node.js', 'MongoDB Atlas', 'Cloudinary', 'Express'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/cloud-drive',
     live: '#',
-    featured: true,
+    featured: false,
   },
   {
-    title: 'Cloud Sync',
-    description: 'Real-time file synchronization tool with end-to-end encryption and cross-platform support.',
-    tech: ['Go', 'AWS S3', 'WebSocket', 'Docker'],
+    title: 'Weather World App',
+    description:
+      'A sleek, responsive weather app for mobile and web. Get real-time weather updates, accurate forecasts, and location-based conditions in a beautifully designed, easy-to-use interface.',
+    tech: ['React', 'Weather API', 'Responsive', 'CSS'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/weather-world',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Interest Hub',
+    description:
+      'A chat interface enabling real-time messaging with a sleek design. Includes text, media sharing, and reactions for an interactive and dynamic messaging experience.',
+    tech: ['React', 'Socket.io', 'Node.js', 'Real-time'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/interest-hub',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Sri Lanka Conductor Portal',
+    description:
+      'A mobile/web application for bus conductors in Sri Lanka to issue digital tickets. Manages routes, passenger counts, daily trips, income, and passenger details automatically.',
+    tech: ['React', 'Mobile', 'Node.js', 'MongoDB'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/conductor-portal',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Talk Bot',
+    description:
+      'An interactive chatbot using the LLaMA 2 model, hosted on the Ollama server and designed to run locally. Provides intelligent and responsive conversations for various applications.',
+    tech: ['Python', 'LLaMA 2', 'Ollama', 'NLP'],
+    category: 'AI/ML',
+    github: 'https://github.com/vinushaanth/talk-bot',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'News Aggregator',
+    description:
+      'A responsive news aggregator displaying real-time articles from multiple sources. Allows users to filter news by categories for easy browsing and updates.',
+    tech: ['React', 'News API', 'Responsive', 'JavaScript'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/news-aggregator',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Voicify',
+    description:
+      'Converts text into natural-sounding speech using TTS technology. Allows users to add effects, download audio, and analyze word/character counts for accessibility, narration, and automation.',
+    tech: ['JavaScript', 'TTS', 'Web Audio', 'React'],
     category: 'Tools',
-    github: 'https://github.com/vinushaanth/cloudsync',
+    github: 'https://github.com/vinushaanth/voicify',
     live: '#',
     featured: false,
   },
   {
-    title: 'YOLOvFeed',
-    description: 'Automated animal feed monitoring system using YOLO object detection for smart farming.',
-    tech: ['Python', 'YOLOv8', 'Raspberry Pi', 'IoT'],
-    category: 'AI/ML',
-    github: 'https://github.com/vinushaanth/yolovfeed',
+    title: 'QuickPing',
+    description:
+      'Measures internet connection speed by sending data packets to a server and calculating travel time. Displays download speed, upload speed, and ping latency results.',
+    tech: ['JavaScript', 'Network', 'API', 'React'],
+    category: 'Tools',
+    github: 'https://github.com/vinushaanth/quickping',
     live: '#',
     featured: false,
   },
   {
-    title: 'Puzzle Quest',
-    description: 'Interactive puzzle game with multiple levels, achievements, and leaderboard functionality.',
-    tech: ['Unity', 'C#', 'Firebase', 'Blender'],
+    title: 'MailFlow-Automator',
+    description:
+      'A user-friendly email sending interface connected to an automated n8n workflow. Allows quick email composition with optional attachments and seamless sending through automation.',
+    tech: ['n8n', 'Automation', 'React', 'Email API'],
+    category: 'Tools',
+    github: 'https://github.com/vinushaanth/mailflow',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'AutoFlow Assistant',
+    description:
+      'An intelligent automation workflow for analyzing Google Sheets data, sending personalized emails, and summarizing calendar events. Streamlines data-driven communication and scheduling.',
+    tech: ['Google Sheets', 'Automation', 'AI', 'API'],
+    category: 'Tools',
+    github: 'https://github.com/vinushaanth/autoflow',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Benchmarking',
+    description:
+      'Conducted benchmarking analysis across different laptop devices to evaluate performance variations, focusing on speed, processing power, and efficiency under various workloads.',
+    tech: ['Analysis', 'Performance', 'Testing', 'Metrics'],
+    category: 'Tools',
+    github: 'https://github.com/vinushaanth/benchmarking',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Mini Bus Reservation System',
+    description:
+      'A bus reservation system using HTML, CSS, and JavaScript. Manages seat availability, lets users select routes, and calculates total fare for convenient online ticket booking.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'UI/UX'],
+    category: 'Web',
+    github: 'https://github.com/vinushaanth/bus-reservation',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Pong Game',
+    description:
+      'A simple two-player arcade game replicating the classic Pong. Players control paddles to bounce a ball back and forth with real-time player interaction and basic physics simulation.',
+    tech: ['JavaScript', 'Canvas', 'Physics', 'Game Dev'],
     category: 'Games',
-    github: 'https://github.com/vinushaanth/puzzlequest',
+    github: 'https://github.com/vinushaanth/pong-game',
+    live: '#',
+    featured: false,
+  },
+  {
+    title: 'Breakout Game',
+    description:
+      'An interactive arcade game where players control a paddle to break bricks with a bouncing ball. Features smooth controls, visual effects, score tracking, and increasing difficulty.',
+    tech: ['JavaScript', 'Canvas', 'Animation', 'Game Dev'],
+    category: 'Games',
+    github: 'https://github.com/vinushaanth/breakout-game',
     live: '#',
     featured: false,
   },
 ];
 
+const INITIAL_SHOW_COUNT = 6;
+
 export const ProjectsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeCategory, setActiveCategory] = useState('All');
+  const [showAll, setShowAll] = useState(false);
 
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const filteredProjects =
+    activeCategory === 'All'
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
+
+  const displayedProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_SHOW_COUNT);
+
+  const hasMore = filteredProjects.length > INITIAL_SHOW_COUNT;
 
   return (
     <section id="projects" className="section-padding">
@@ -105,7 +381,8 @@ export const ProjectsSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-muted-foreground max-w-2xl mx-auto"
             >
-              Here are some of my recent projects that showcase my skills and experience
+              A collection of {projects.length}+ projects spanning web development, AI/ML,
+              game development, and automation tools
             </motion.p>
           </div>
 
@@ -121,22 +398,30 @@ export const ProjectsSection = () => {
                 key={category}
                 variant={activeCategory === category ? 'default' : 'glass'}
                 size="sm"
-                onClick={() => setActiveCategory(category)}
+                onClick={() => {
+                  setActiveCategory(category);
+                  setShowAll(false);
+                }}
                 className="rounded-full min-h-[40px] px-4 text-sm"
               >
                 {category}
+                {category !== 'All' && (
+                  <span className="ml-1.5 text-xs opacity-70">
+                    ({projects.filter((p) => p.category === category).length})
+                  </span>
+                )}
               </Button>
             ))}
           </motion.div>
 
-          {/* Projects Grid - single column on mobile */}
+          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {filteredProjects.map((project, index) => (
+            {displayedProjects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
+                transition={{ duration: 0.5, delay: 0.05 * (index % 6) }}
                 whileHover={{ y: -10 }}
                 className="group"
               >
@@ -156,15 +441,17 @@ export const ProjectsSection = () => {
                       >
                         <Github className="w-5 h-5" />
                       </a>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors"
-                        aria-label={`View ${project.title} live`}
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
+                      {project.live !== '#' && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 -m-2 text-muted-foreground hover:text-primary active:text-primary transition-colors"
+                          aria-label={`View ${project.title} live`}
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -196,6 +483,35 @@ export const ProjectsSection = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Show More / Show Less Button */}
+          {hasMore && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex justify-center mt-8 sm:mt-12"
+            >
+              <Button
+                variant="glass"
+                size="lg"
+                onClick={() => setShowAll(!showAll)}
+                className="rounded-full min-h-[52px] px-8 text-base gap-2"
+              >
+                {showAll ? (
+                  <>
+                    <ChevronUp size={20} />
+                    Show Less
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown size={20} />
+                    View All {filteredProjects.length} Projects
+                  </>
+                )}
+              </Button>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

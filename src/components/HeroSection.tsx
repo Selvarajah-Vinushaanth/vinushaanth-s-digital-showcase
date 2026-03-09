@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown, Download, Eye } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, Download, Eye, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { ResumePreview } from './ResumePreview';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/vinushaanth', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/vinushaanth', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:vinushaanth@example.com', label: 'Email' },
+  { icon: Github, href: 'https://github.com/Selvarajah-Vinushaanth', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/selvarajah-vinushaanth/', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:selvavinu26816@gmail.com', label: 'Email' },
 ];
 
 export const HeroSection = () => {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -87,7 +91,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl sm:text-2xl md:text-3xl font-display text-muted-foreground mb-6"
           >
-            A Passionate Computer Science Engineer
+            ML Engineer · Full-Stack Developer · Data Science
           </motion.h2>
 
           {/* Description */}
@@ -97,8 +101,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Specializing in Computer Science and Network Systems, I design robust solutions 
-            that enhance performance and security. Let's build something amazing together.
+            Bridging Machine Learning and Software Engineering — I build intelligent web apps, 
+            ML pipelines, and full-stack solutions. Currently an ML Engineering Intern at CML Insight Inc, Austin, Texas, USA.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -120,11 +124,11 @@ export const HeroSection = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={() => window.open('/resume.pdf', '_blank')}
+              onClick={() => setIsResumeOpen(true)}
               className="w-full sm:w-auto min-h-[52px] text-base"
             >
-              <Download className="mr-2" size={20} />
-              Download CV
+              <FileText className="mr-2" size={20} />
+              Preview CV
             </Button>
             <Button 
               variant="glass" 
@@ -179,6 +183,9 @@ export const HeroSection = () => {
           </motion.button>
         </motion.div>
       </div>
+
+      {/* Resume Preview Modal */}
+      <ResumePreview isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 };

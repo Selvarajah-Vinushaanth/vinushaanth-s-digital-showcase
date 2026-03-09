@@ -48,10 +48,10 @@ export const Navigation = () => {
               e.preventDefault();
               scrollToSection('#home');
             }}
-            className="text-2xl font-display font-bold gradient-text"
+            className="text-xl sm:text-2xl font-display font-bold gradient-text"
             whileHover={{ scale: 1.05 }}
           >
-            V<span className="text-foreground">.</span>
+            Vinushaanth<span className="text-foreground">.</span>
           </motion.a>
 
           {/* Desktop Navigation */}
