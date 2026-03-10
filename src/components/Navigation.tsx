@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, User, FolderKanban, Sparkles, MessageSquare } from 'lucide-react';
+import { Menu, X, Home, User, FolderKanban, Sparkles, Award, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
@@ -8,6 +8,7 @@ const navLinks = [
   { name: 'About', href: '#about', icon: User },
   { name: 'Projects', href: '#projects', icon: FolderKanban },
   { name: 'Skills', href: '#skills', icon: Sparkles },
+  { name: 'Certifications', href: '#certifications', icon: Award },
   { name: 'Contact', href: '#contact', icon: MessageSquare },
 ];
 
