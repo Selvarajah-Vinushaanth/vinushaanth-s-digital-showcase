@@ -8,6 +8,16 @@ const categories = ['All', 'Web', 'AI/ML', 'Games', 'Tools'];
 
 const projects = [
   {
+    title: 'Research Compass',
+    description:
+      'Research Compass is an AI-powered research assistant that helps upload papers, generate summaries and insights, chat with documents, analyze research, manage collections, cluster topics, compare papers, and export citations — all in a responsive, intuitive interface.',
+    tech: ['React', 'FastAPI', 'PostgreSQL', 'Redis', 'Hugging Face'],
+    category: 'AI/ML',
+    github: 'https://github.com/Selvarajah-Vinushaanth/research-bd',
+    live: '#',
+    featured: true,
+  },
+  {
     title: 'Talksy',
     description:
       'A real-time communication app supporting one-to-one and group chats, along with audio and video calling. Features direct messaging, group conversations, single and group audio/video calls — all in one seamless platform.',
