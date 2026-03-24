@@ -40,6 +40,10 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+    - name: Enable Corepack
+      run: corepack enable
+    - name: Activate pnpm
+      run: corepack prepare pnpm@10 --activate
     - name: Install Vercel CLI
       run: npm install -g vercel
     - name: Pull Vercel Environment Information
