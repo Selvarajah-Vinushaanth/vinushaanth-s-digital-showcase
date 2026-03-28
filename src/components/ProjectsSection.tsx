@@ -337,6 +337,16 @@ const projects = [
     live: '#',
     featured: false,
   },
+  {
+    title: 'CertChain',
+    description:
+      'Built a full-stack blockchain application for issuing and verifying academic certificates on Ethereum. Certificates are hashed and stored on-chain via smart contracts, with files pinned to IPFS for tamper-proof storage. Features a Next.js frontend with MetaMask wallet integration, Prisma/PostgreSQL database, and a real-time dashboard for institutions to issue, revoke, and manage certificates.',
+    tech: ['Next.js', 'Ethereum', 'Solidity', 'IPFS', 'PostgreSQL'],
+    category: 'Web',
+    github: 'https://github.com/Selvarajah-Vinushaanth/Certify-Web-Blockchain-',
+    live: '#',
+    featured: false,
+  },
 ];
 
 const INITIAL_SHOW_COUNT = 6;
