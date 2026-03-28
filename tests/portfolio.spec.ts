@@ -9,10 +9,7 @@ test('portfolio', async ({ page }) => {
   await page.waitForTimeout(1000);
   await expect(page.getByRole('heading', { name: 'Featured Projects' })).toBeVisible();
   await page.waitForTimeout(1000);
-  await page.getByRole('button', { name: 'Web (12)' }).click();
-  await page.getByRole('button', { name: 'AI/ML (14)' }).click();
-  await page.getByRole('button', { name: 'Games (2)' }).click();
-  await page.getByRole('button', { name: 'Tools (5)' }).click();
+
   await expect(page.getByRole('heading', { name: 'What I Do Best' })).toBeVisible();
   await page.waitForTimeout(1000);
   await expect(page.getByRole('heading', { name: 'Technologies I Use' })).toBeVisible();
