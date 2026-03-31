@@ -10,7 +10,7 @@ const projects = [
   {
     title: 'Research Compass',
     description:
-      'Research Compass is an AI-powered research assistant that helps upload papers, generate summaries and insights, chat with documents, analyze research, manage collections, cluster topics, compare papers, and export citations — all in a responsive, intuitive interface.',
+      'Research Compass is an AI-powered research assistant that helps upload papers, generate summaries and insights, chat with documents, analyze research, manage collections, cluster topics, compare papers, export citations, and search Google Scholar — all in a responsive, intuitive interface.',
     tech: ['React', 'FastAPI', 'PostgreSQL', 'Redis', 'Hugging Face'],
     category: 'AI/ML',
     github: 'https://github.com/Selvarajah-Vinushaanth/research-bd',
