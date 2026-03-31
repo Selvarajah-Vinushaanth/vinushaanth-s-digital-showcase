@@ -347,6 +347,16 @@ const projects = [
     live: '#',
     featured: false,
   },
+  {
+    title: 'NexusAI',
+    description:
+      'A full-stack AI-powered assistant with 15 integrated tools and MCP architecture. Features smart LLM-based tool routing that dynamically invokes the right tools (web search, news, weather, Wikipedia, currency exchange, GitHub lookup, translator, QR code generation, and more) based on user queries. Includes real-time streaming responses, multi-turn conversation context, persistent chat sessions, and dark/light theme support.',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Gemini AI', 'MCP SDK'],
+    category: 'AI/ML',
+    github: 'https://github.com/Selvarajah-Vinushaanth/Nexus-AI--MCP',
+    live: '#',
+    featured: false,
+  },
 ];
 
 const INITIAL_SHOW_COUNT = 6;
