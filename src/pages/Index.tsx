@@ -7,10 +7,12 @@ import { CertificationsSection } from '@/components/CertificationsSection';
 import { ContactSection } from '@/components/ContactSection';
 import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
+import { ScrollProgress } from '@/components/ScrollProgress';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <ScrollProgress />
       <Navigation />
       <main>
         <HeroSection />

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, User, FolderKanban, Sparkles, Award, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
   { name: 'Home', href: '#home', icon: Home },
@@ -15,6 +16,7 @@ const navLinks = [
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,25 @@ export const Navigation = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((link) => link.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (href: string) => {
@@ -57,35 +78,50 @@ export const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
-                whileHover={{ y: -2 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                  }}
+                  className={`relative transition-colors duration-300 text-sm font-medium ${
+                    isActive ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                  }`}
+                  whileHover={{ y: -2 }}
+                >
+                  {link.name}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavIndicator"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full"
+                    />
+                  )}
+                </motion.a>
+              );
+            })}
+            <ThemeToggle />
             <Button variant="hero" size="sm" onClick={() => scrollToSection('#contact')}>
               Let's Talk
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden w-12 h-12 rounded-xl active:bg-primary/20 touch-target"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </Button>
+          {/* Mobile: Theme Toggle + Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="w-12 h-12 rounded-xl active:bg-primary/20 touch-target"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            </Button>
+          </div>
         </nav>
       </motion.header>
 
@@ -116,9 +152,17 @@ export const Navigation = () => {
                       initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.08 }}
-                      className="flex items-center gap-4 px-4 py-4 min-h-[60px] rounded-2xl text-foreground hover:bg-primary/10 hover:text-primary active:bg-primary/20 active:scale-[0.98] transition-all touch-target"
+                      className={`flex items-center gap-4 px-4 py-4 min-h-[60px] rounded-2xl transition-all touch-target ${
+                        activeSection === link.href.slice(1)
+                          ? 'bg-primary/15 text-primary'
+                          : 'text-foreground hover:bg-primary/10 hover:text-primary active:bg-primary/20 active:scale-[0.98]'
+                      }`}
                     >
-                      <div className="p-3 rounded-xl bg-secondary/80 text-primary shrink-0">
+                      <div className={`p-3 rounded-xl shrink-0 ${
+                        activeSection === link.href.slice(1)
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-secondary/80 text-primary'
+                      }`}>
                         <link.icon size={24} />
                       </div>
                       <span className="text-lg font-display font-semibold">{link.name}</span>

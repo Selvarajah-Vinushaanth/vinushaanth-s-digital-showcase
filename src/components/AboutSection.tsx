@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { GraduationCap, MapPin, Calendar, FileText, Briefcase, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ResumePreview } from './ResumePreview';
+import { projects } from './ProjectsSection';
 
 const timeline = [
   {
@@ -100,7 +101,7 @@ export const AboutSection = () => {
                     <p className="text-[9px] sm:text-[10px] md:text-xs text-muted-foreground">GPA / 4.0</p>
                   </div>
                   <div className="text-center p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-secondary/50 border border-glass-border">
-                    <p className="text-base sm:text-lg md:text-xl font-bold text-primary">30+</p>
+                    <p className="text-base sm:text-lg md:text-xl font-bold text-primary">{projects.length}</p>
                     <p className="text-[9px] sm:text-[10px] md:text-xs text-muted-foreground">Projects</p>
                   </div>
                   <div className="text-center p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-secondary/50 border border-glass-border">

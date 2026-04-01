@@ -361,6 +361,8 @@ const projects = [
 
 const INITIAL_SHOW_COUNT = 6;
 
+export { projects };
+
 export const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
