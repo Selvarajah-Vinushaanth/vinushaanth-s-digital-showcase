@@ -29,7 +29,7 @@ test('portfolio', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Vinushaanth\'s Resume' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Open in Tab' })).toBeVisible();
   await page.waitForTimeout(1000);
-  await page.getByRole('button').filter({ hasText: /^$/ }).click();
+  await page.getByRole('button', { name: 'Close' }).click();
   await page.waitForTimeout(1000);
   await page.getByRole('heading', { name: 'Hi, I\'m Vinushaanth' }).click();
 });

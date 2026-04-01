@@ -74,6 +74,7 @@ export const ResumePreview = ({ isOpen, onClose }: ResumePreviewProps) => {
                 <Button
                   variant="ghost"
                   size="icon"
+                  aria-label="Close"
                   onClick={onClose}
                   className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl hover:bg-destructive/20 hover:text-destructive touch-target"
                 >
