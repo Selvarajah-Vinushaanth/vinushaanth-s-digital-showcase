@@ -68,6 +68,16 @@ const projects = [
     featured: true,
   },
   {
+    title: 'AdaptLearn',
+    description:
+      'AdaptLearn is a full-stack AI-powered learning platform that generates personalized courses on any topic. It features adaptive quizzes, practice tasks evaluated by AI, spaced repetition for long-term retention, a skill dependency graph, daily challenges, an AI tutor chat, XP-based gamification with levels and streaks, and a community leaderboard — all adapting to each learner\'s unique progress.',
+    tech: ['Next.js 14', 'FastAPI', 'PostgreSQL', 'Gemini AI', 'Docker'],
+    category: 'AI/ML',
+    github: 'https://github.com/Selvarajah-Vinushaanth/Adapt-Learn-FD',
+    live: '#',
+    featured: true,
+  },
+  {
     title: 'Semantic Image Search',
     description:
       'A web app that lets users upload images and search using natural language descriptions. Uses OpenAI CLIP model for content understanding with a React frontend and FastAPI backend with FAISS vector search.',
