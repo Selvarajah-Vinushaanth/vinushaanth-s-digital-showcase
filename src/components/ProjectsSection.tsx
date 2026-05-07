@@ -78,6 +78,16 @@ const projects = [
     featured: true,
   },
   {
+    title: 'Smart Parking Camera System',
+    description:
+      'Built a real-time smart parking assistant that uses your smartphone as an IP webcam. The system continuously analyzes the camera feed to detect proximity, classifies risk into four zones, and fires instant audio alerts — all streamed live to a web dashboard. Sessions and alerts are logged automatically so you can review parking history and patterns over time.',
+    tech: ['Next.js', 'FastAPI', 'PostgreSQL', 'Alembic', 'WebSocket', 'IP Webcam', 'OpenCV'],
+    category: 'AI/ML',
+    github: 'https://github.com/Selvarajah-Vinushaanth/ParkGuard',
+    live: '#',
+    featured: false,
+  },
+  {
     title: 'Semantic Image Search',
     description:
       'A web app that lets users upload images and search using natural language descriptions. Uses OpenAI CLIP model for content understanding with a React frontend and FastAPI backend with FAISS vector search.',
